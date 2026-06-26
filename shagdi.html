@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Орнамент Шагди — Адыгэ Джэгу</title>
+    <style>
+        :root {
+            --bg-color: #050806;
+            --surface-color: #0b120d;
+            --surface-light: #121f17;
+            --primary-dark: #072216;
+            --adygha-green: #006a4e; 
+            --gold-color: #e5b842;    
+            --gold-light: #fff0b3;
+            --text-color: #f5f9f6;
+            --text-muted: #96a89e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .ethnic-pattern {
+            background-image: radial-gradient(var(--surface-light) 1px, transparent 0);
+            background-size: 24px 24px;
+            opacity: 0.15;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: rgba(11, 18, 13, 0.96);
+            position: fixed;
+            width: 100%;
+            top: 0; left: 0; z-index: 1000;
+            border-bottom: 2px solid var(--gold-color);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .logo span { color: var(--gold-color); }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: var(--gold-color); }
+        nav ul li a.back-link { color: var(--gold-color); }
+
+        .hero {
+            padding: 180px 0 80px 0;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, rgba(5,8,6,0.2) 0%, var(--bg-color) 100%);
+        }
+
+        .flag-emblem {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px auto;
+            fill: var(--gold-color);
+        }
+
+        .hero h1 {
+            font-family: 'Georgia', serif;
+            font-size: 44px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .hero h1 span { color: var(--gold-color); }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-color), transparent);
+        }
+        .divider svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--gold-color);
+            margin: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 34px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-title span { color: var(--gold-color); }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .content-text {
+            background: var(--surface-color);
+            padding: 40px 35px;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold-color);
+        }
+
+        .content-text h3 {
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .content-text p {
+            margin-bottom: 18px;
+            color: #e0e8e4;
+            text-align: justify;
+        }
+
+        .content-text ul {
+            margin-left: 25px;
+            margin-bottom: 18px;
+            color: var(--text-muted);
+        }
+
+        .content-text ul li { margin-bottom: 8px; }
+
+        .content-image {
+            background: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid rgba(229, 184, 66, 0.2);
+            padding: 30px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content-image svg {
+            width: 80%;
+            max-width: 350px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .content-image .caption {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .back-btn-container {
+            text-align: center;
+            margin: 30px 0 20px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--gold-color);
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: #fcd468;
+            box-shadow: 0 0 20px rgba(229, 184, 66, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-grid-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-mini {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(229, 184, 66, 0.1);
+            text-align: center;
+        }
+
+        .feature-mini h4 {
+            color: var(--gold-color);
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-mini p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: rgba(229, 184, 66, 0.05);
+            border: 1px solid rgba(229, 184, 66, 0.2);
+            padding: 30px 35px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-style: italic;
+            color: var(--gold-light);
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .ornament-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .ornament-item {
+            background: var(--bg-color);
+            border: 1px solid rgba(229, 184, 66, 0.15);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .ornament-item svg {
+            width: 100%;
+            max-width: 80px;
+            height: auto;
+        }
+
+        .ornament-item .ornament-name {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 8px;
+            display: block;
+        }
+
+        footer {
+            background-color: #020403;
+            padding: 40px 0;
+            border-top: 2px solid var(--gold-color);
+            margin-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        @media(max-width: 768px) {
+            .header-container { flex-direction: column; gap: 15px; padding: 10px 0; }
+            nav ul li { margin: 0 8px; }
+            .hero h1 { font-size: 30px; }
+            .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .content-image { min-height: 250px; }
+            .ornament-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ethnic-pattern"></div>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">Адыгэ<span>Джэгу</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="back-link">← На главную</a></li>
+                    <li><a href="cherkeska.html">Черкеска</a></li>
+                    <li><a href="sae.html">Платье Сае</a></li>
+                    <li><a href="phachich.html">Пхачич</a></li>
+                    <li><a href="shagdi.html">Орнамент</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <svg class="flag-emblem" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                <path d="M50 25 L50 75 M35 40 L65 60 M35 60 L65 40" stroke="#e5b842" stroke-width="2"/>
+                <polygon points="50,20 48,26 54,24" />
+                <polygon points="65,35 59,38 63,43" />
+                <polygon points="35,35 41,38 37,43" />
+            </svg>
+            <h1>Орнамент <span>«Шагди»</span></h1>
+            <p>Древние солярные символы и геометрические узоры, оживающие на танцевальных костюмах. Язык, на котором адыги говорили с самим Солнцем.</p>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"><svg viewBox="0 0 100 100"><path d="M50 10 L90 50 L50 90 L10 50 Z M50 25 L75 50 L50 75 L25 50 Z" /></svg></div></div>
+
+    <section class="container">
+        <div class="content-grid">
+            <div class="content-text">
+                <h3>Солярная символика адыгов</h3>
+                <p><strong>Шагди (Шагъди)</strong> — это общее название для древних адыгских орнаментов, восходящих к солярным (солнечным) культам и языческим верованиям. В переводе с адыгского слово имеет смысловую связь с понятием «свет» и «сияние».</p>
+                <p>Искусство орнаментального шитья у адыгов насчитывает тысячелетия. Ещё в эпоху дольменной культуры мастера вышивали золотыми и серебряными нитями сложные узоры, каждый из которых имел глубокий сакральный смысл и выполнял функцию оберега.</p>
+                
+                <h3 style="margin-top: 30px; font-size: 22px;">Смыслы и значения</h3>
+                <ul>
+                    <li><strong>Солярные знаки:</strong> Круги, розетки и крестовидные фигуры символизировали Солнце, жизнь и плодородие.</li>
+                    <li><strong>Зигзаги и волны:</strong> Олицетворяли воду, горные потоки и небесную влагу.</li>
+                    <li><strong>Ромбы и квадраты:</strong> Символы земли, стабильности и домашнего очага.</li>
+                    <li><strong>Спирали:</strong> Бесконечность, вечное движение и круговорот жизни.</li>
+                </ul>
+
+                <div class="quote-block">
+                    «Каждый узор на одежде адыга был не просто украшением. Это был магический текст, защищающий владельца от злых сил и приносящий удачу».
+                </div>
+
+                <div class="feature-grid-mini">
+                    <div class="feature-mini">
+                        <h4>✦ Техника</h4>
+                        <p>Золотое шитьё, серебряные нити, бисер, жемчуг и драгоценные камни.</p>
+                    </div>
+                    <div class="feature-mini">
+                        <h4>✦ Расположение</h4>
+                        <p>Нагрудники, пояса, рукава, подолы платьев и головные уборы.</p>
+                    </div>
+                    <div class="feature-mini">
+                        <h4>✦ Значение</h4>
+                        <p>Обереги, статусные символы и родовые знаки (тамги).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-image">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="200" cy="200" r="170" fill="none" stroke="#e5b842" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="130" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    <circle cx="200" cy="200" r="90" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    
+                    <path d="M200 30 L200 370 M30 200 L370 200" stroke="#e5b842" stroke-width="1" opacity="0.5"/>
+                    
+                    <path d="M200 30 L230 120 L320 90 L260 170 L370 200 L280 230 L320 310 L230 280 L200 370 L170 280 L80 310 L140 230 L30 200 L120 170 L80 90 L170 120 L200 30 Z" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    
+                    <circle cx="200" cy="200" r="35" fill="none" stroke="#e5b842" stroke-width="2"/>
+                    <circle cx="200" cy="200" r="15" fill="#e5b842" opacity="0.3"/>
+                    
+                    <path d="M200 165 L200 235 M165 200 L235 200" stroke="#e5b842" stroke-width="1.5"/>
+                    
+                    <circle cx="145" cy="145" r="8" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    <circle cx="255" cy="145" r="8" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    <circle cx="145" cy="255" r="8" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    <circle cx="255" cy="255" r="8" fill="none" stroke="#e5b842" stroke-width="1.5"/>
+                    
+                    <circle cx="120" cy="120" r="5" fill="#e5b842" opacity="0.5"/>
+                    <circle cx="280" cy="120" r="5" fill="#e5b842" opacity="0.5"/>
+                    <circle cx="120" cy="280" r="5" fill="#e5b842" opacity="0.5"/>
+                    <circle cx="280" cy="280" r="5" fill="#e5b842" opacity="0.5"/>
+                    
+                    <text x="200" y="390" text-anchor="middle" fill="#e5b842" font-size="11" font-family="Georgia, serif">Солярный орнамент «Шагди»</text>
+                </svg>
+                <p class="caption">Древний солярный символ в центре композиции</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"><svg viewBox="0 0 100 100"><path d="M50 10 L90 50 L50 90 L10 50 Z M50 25 L75 50 L50 75 L25 50 Z" /></svg></div></div>
+
+    <section class="container">
+        <h2 class="section-title">Основные <span>Орнаменты</span></h2>
+        <div style="background: var(--surface-color); padding: 40px; border-radius: 8px; border: 1px solid rgba(229, 184, 66, 0.15);">
+            <p style="font-size: 16px; color: #e0e8e4; text-align: center; margin-bottom: 30px;">
+                Традиционные адыгские орнаменты и их сакральные значения:
+            </p>
+            
+            <div class="ornament-grid">
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="#e5b842" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="15" fill="none" stroke="#e5b842" stroke-width="2"/>
+                        <path d="M50 15 L50 85 M15 50 L85 50" stroke="#e5b842" stroke-width="1.5"/>
+                        <path d="M30 30 L70 70 M30 70 L70 30" stroke="#e5b842" stroke-width="1.5"/>
+                    </svg>
+                    <span class="ornament-name">✧ Солярный диск</span>
+                </div>
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                        <path d="M50 25 L75 50 L50 75 L25 50 Z" stroke="#e5b842" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span class="ornament-name">✦ Ромб предков</span>
+                </div>
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M20 50 L50 20 L80 50 L50 80 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                        <path d="M30 50 L50 30 L70 50 L50 70 Z" stroke="#e5b842" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span class="ornament-name">◆ Земной покров</span>
+                </div>
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50 15 Q70 30 50 50 Q30 70 50 85 Q70 70 50 50 Q30 30 50 15" stroke="#e5b842" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="ornament-name">~ Волны жизни</span>
+                </div>
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M50 15 L65 50 L50 85 L35 50 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                        <path d="M65 50 L80 85 L65 15" stroke="#e5b842" stroke-width="1.5" fill="none"/>
+                        <path d="M35 50 L20 85 L35 15" stroke="#e5b842" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span class="ornament-name">✦ Триединство</span>
+                </div>
+                <div class="ornament-item">
+                    <svg viewBox="0 0 100 100">
+                        <path d="M20 50 L40 30 L60 50 L40 70 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                        <path d="M40 30 L60 10 L80 30 L60 50 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                        <path d="M40 70 L60 50 L80 70 L60 90 Z" stroke="#e5b842" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="ornament-name">⬡ Горный хребет</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container back-btn-container">
+        <a href="index.html" class="back-btn">← Вернуться в энциклопедию</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Мультимедийный Этно-Архив Черкесской Культуры. Создано в сердце Адыгеи, г. Майкоп.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
